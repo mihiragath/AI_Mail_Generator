@@ -42,9 +42,14 @@ connectDB();
 
 const app = express();
 
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  process.env.FRONTEND_URL_PROD,
+];
+
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || process.env.FRONTEND_URL_LOCAL || true,
+    origin: allowedOrigins,
     credentials: true,
   }),
 );
